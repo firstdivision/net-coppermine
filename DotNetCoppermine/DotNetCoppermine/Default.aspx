@@ -22,7 +22,9 @@
 		New Quality: <asp:TextBox id="txtQuality" runat="Server" Text="100"></asp:TextBox><br />
 		<asp:LinkButton ID="lnkResize" runat="Server" Text="Resize"></asp:LinkButton> | 
 		<asp:LinkButton ID="lnkSave" runat="Server" Text="Save"></asp:LinkButton>
-        <br />
+        |
+        <asp:LinkButton ID="lnkTest" runat="server"
+            Text="TestPerformace"></asp:LinkButton><br />
         <br />
 	    <asp:placeholder ID="plhResize" runat="server"></asp:placeholder>
     </form>

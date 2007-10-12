@@ -19,10 +19,82 @@ Partial Public Class _Default
    End Sub
 
    Protected Sub lnkSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lnkSave.Click
+      SaveToDisk(txtQuality.Text, txtHeight.Text, txtWidth.Text)
+   End Sub
+
+   Protected Sub lnkTest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lnkTest.Click
+      Dim dtResults As New DataTable
+      dtResults.Columns.Add("Quality")
+      dtResults.Columns.Add("Render Time")
+
+      'Quality Test
+      For i As Integer = 10 To 100 Step 10
+         Dim dr As DataRow = dtResults.NewRow
+         dr(0) = i
+         dr(1) = SaveToDisk(i, txtHeight.Text, txtWidth.Text)
+         dtResults.Rows.Add(dr)
+      Next
+
+      Dim MyLabel As New Label
+      MyLabel.Text = "<h3>Test Effect of Quality Setting on Generation Time</h3>"
+      plhResize.Controls.Add(MyLabel)
+
+      Dim myGridView As New GridView
+      plhResize.Controls.Add(myGridView)
+      myGridView.DataSource = dtResults
+      myGridView.DataBind()
+
+
+      'FileSize Test
+      dtResults.Clear()
+      dtResults.Columns(0).ColumnName = "Quality"
+      dtResults.Columns(1).ColumnName = "File Size"
+      For i As Integer = 10 To 100 Step 10
+         Dim dr As DataRow = dtResults.NewRow
+         dr(0) = i
+         dr(1) = SaveToDisk(i, txtHeight.Text, txtWidth.Text, True)
+         dtResults.Rows.Add(dr)
+      Next
+
+      Dim MyLabel3 As New Label
+      MyLabel3.Text = "<h3>Test Effect of Quality on File Size</h3>"
+      plhResize.Controls.Add(MyLabel3)
+
+      Dim myGridView3 As New GridView
+      plhResize.Controls.Add(myGridView3)
+      myGridView3.DataSource = dtResults
+      myGridView3.DataBind()
+
+
+      'Dimension Test
+      dtResults.Clear()
+      dtResults.Columns(0).ColumnName = "Dimension Size"
+      dtResults.Columns(1).ColumnName = "Render Time"
+      For i As Integer = 10 To 1010 Step 100
+         Dim dr As DataRow = dtResults.NewRow
+         dr(0) = i
+         dr(1) = SaveToDisk(txtQuality.Text, i, i)
+         dtResults.Rows.Add(dr)
+      Next
+
+      Dim MyLabel2 As New Label
+      MyLabel2.Text = "<h3>Test Effect of Size on Render Time</h3>"
+      plhResize.Controls.Add(MyLabel2)
+
+      Dim myGridView2 As New GridView
+      plhResize.Controls.Add(myGridView2)
+      myGridView2.DataSource = dtResults
+      myGridView2.DataBind()
+
+   End Sub
+
+   Private Function SaveToDisk(ByVal intQuality As Integer, ByVal Height As Integer, ByVal Width As Integer, Optional ByVal ReturnFileSize As Boolean = False) As String
       Try
          Dim myImageManager As New libDotNetCoppermine.ImageResizer
          Dim myDirOriginals As New IO.DirectoryInfo(Server.MapPath("Images"))
          Dim myDirOutput As New IO.DirectoryInfo(Server.MapPath("Images\Thumbs"))
+         Dim dblTotalFileSize As Double
+         Dim intTotalFiles As Integer
 
          If Not myDirOutput.Exists Then myDirOutput.Create()
 
@@ -37,17 +109,23 @@ Partial Public Class _Default
                MyFile.Delete()
 
                Dim OutputStream As System.IO.FileStream = MyFile.Create
-               myImageManager.ResizeToJPEG(File.FullName, OutputStream, 100, txtHeight.Text, txtWidth.Text)
+               myImageManager.ResizeToJPEG(File.FullName, OutputStream, intQuality, Height, Width)
+
+               dblTotalFileSize += MyFile.Length
+               intTotalFiles += 1
+
                OutputStream.Close()
                OutputStream.Dispose()
             End If
          Next
 
-         'Dim EndTime As Date = Now
-
-         Response.Write("Execution Time :" & Date.Now.Subtract(StartTime).TotalSeconds.ToString)
+         If ReturnFileSize Then
+            Return (dblTotalFileSize / intTotalFiles).ToString("n2")
+         Else
+            Return Date.Now.Subtract(StartTime).TotalSeconds.ToString("n2")
+         End If
       Catch ex As Exception
          Response.Write(ex.ToString)
       End Try
-   End Sub
+   End Function
 End Class

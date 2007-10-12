@@ -94,6 +94,15 @@ Partial Public Class _Default
    Protected WithEvents lnkSave As Global.System.Web.UI.WebControls.LinkButton
 
    '''<summary>
+   '''lnkTest control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents lnkTest As Global.System.Web.UI.WebControls.LinkButton
+
+   '''<summary>
    '''plhResize control.
    '''</summary>
    '''<remarks>
