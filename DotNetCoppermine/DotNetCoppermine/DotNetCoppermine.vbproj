@@ -89,6 +89,13 @@
       <SubType>ASPXCodebehind</SubType>
       <DependentUpon>DrillDown.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DynamicImage.aspx.designer.vb">
+      <DependentUpon>DynamicImage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicImage.aspx.vb">
+      <SubType>ASPXCodebehind</SubType>
+      <DependentUpon>DynamicImage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -130,7 +137,14 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Content Include="DynamicImage.aspx" />
     <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libDotNetCoppermine\libDotNetCoppermine.vbproj">
+      <Project>{FB4809FD-3C3D-4531-8CD7-49837D74F59E}</Project>
+      <Name>libDotNetCoppermine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v8.0\WebApplications\Microsoft.WebApplication.targets" />

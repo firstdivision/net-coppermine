@@ -47,4 +47,58 @@ Partial Public Class _Default
    '''To modify move field declaration from designer file to code-behind file.
    '''</remarks>
    Protected WithEvents HyperLink2 As Global.System.Web.UI.WebControls.HyperLink
+
+   '''<summary>
+   '''txtWidth control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents txtWidth As Global.System.Web.UI.WebControls.TextBox
+
+   '''<summary>
+   '''txtHeight control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents txtHeight As Global.System.Web.UI.WebControls.TextBox
+
+   '''<summary>
+   '''txtQuality control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents txtQuality As Global.System.Web.UI.WebControls.TextBox
+
+   '''<summary>
+   '''lnkResize control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents lnkResize As Global.System.Web.UI.WebControls.LinkButton
+
+   '''<summary>
+   '''lnkSave control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents lnkSave As Global.System.Web.UI.WebControls.LinkButton
+
+   '''<summary>
+   '''plhResize control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents plhResize As Global.System.Web.UI.WebControls.PlaceHolder
 End Class
