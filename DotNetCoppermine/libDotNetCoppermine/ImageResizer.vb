@@ -18,6 +18,10 @@ Public Class ImageResizer
    ''' <remarks></remarks>
    Public Overloads Sub ResizeToJPEG(ByVal OriginalImagePath As String, ByRef OutputStream As Stream, ByVal PercentageToResize As Decimal, Optional ByVal Quality As Integer = 100)
 
+      If PercentageToResize <= 0 Or PercentageToResize > 1 Then
+         Throw New OverflowException("PercentageToResize must be expressed between 0 and 1 (Including 1 but not including zero).")
+      End If
+
       Dim originalimg, thumb As System.Drawing.Image
       Try
          originalimg = Image.FromFile(OriginalImagePath) ' Fetch User Filename
@@ -70,7 +74,7 @@ Public Class ImageResizer
       End Try
    End Sub
 
-   Function GetEncoder(ByVal mimeType As String) As ImageCodecInfo
+   Private Function GetEncoder(ByVal mimeType As String) As ImageCodecInfo
       Try
          Dim codecs() As ImageCodecInfo = ImageCodecInfo.GetImageEncoders()
          For Each codec As ImageCodecInfo In codecs
@@ -84,7 +88,7 @@ Public Class ImageResizer
    End Function
 
 
-   Function MakeThumbnail(ByVal Source_Img As System.Drawing.Image, ByVal Height As Integer, ByVal Width As Integer) As System.Drawing.Image
+   Private Function MakeThumbnail(ByVal Source_Img As System.Drawing.Image, ByVal Height As Integer, ByVal Width As Integer) As System.Drawing.Image
       Try
          Dim intOriginalWidth As Integer
          Dim intOriginalHeight As Integer
@@ -106,7 +110,7 @@ Public Class ImageResizer
                Height = intOriginalHeight / sngAspectRatio
          End Select
 
-         Dim thumb As System.Drawing.Image = New Bitmap(width, height)
+         Dim thumb As System.Drawing.Image = New Bitmap(Width, Height)
          Dim objGraphics As System.Drawing.Graphics
          objGraphics = System.Drawing.Graphics.FromImage(thumb)
          objGraphics.InterpolationMode = InterpolationMode.HighQualityBicubic
@@ -114,7 +118,7 @@ Public Class ImageResizer
          objGraphics.PixelOffsetMode = PixelOffsetMode.HighQuality
          objGraphics.CompositingQuality = CompositingQuality.HighQuality
 
-         objGraphics.DrawImage(Source_Img, 0, 0, width, height)
+         objGraphics.DrawImage(Source_Img, 0, 0, Width, Height)
          Return thumb
       Catch ex As Exception
          Throw (New Exception("Error in MakeThumbnail", ex))
