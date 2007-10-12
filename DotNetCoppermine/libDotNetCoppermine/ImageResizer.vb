@@ -29,14 +29,11 @@ Public Class ImageResizer
          'do the actual resize
          thumb = MakeThumbnail(originalimg, originalimg.Height * PercentageToResize, originalimg.Width * PercentageToResize)
 
-         Dim codecEncoder As ImageCodecInfo = GetEncoder("image/jpeg")
-         Dim encodeParams As New EncoderParameters(1)
-         Dim qualityParam As New EncoderParameter(Imaging.Encoder.Quality, Quality)
-         encodeParams.Param(0) = qualityParam
-         thumb.Save(OutputStream, codecEncoder, encodeParams)
+         'output the image
+         OutputImageToStream(thumb, OutputStream, Quality)
 
+         'clean up originalImage (thmb is disposed in "OutputImageToSteeam"
          originalimg.Dispose()
-         thumb.Dispose()
       Catch ex As Exception
          Throw New Exception("Error processing JPEG", ex)
       End Try
@@ -61,14 +58,24 @@ Public Class ImageResizer
          'do the actual resize
          thumb = MakeThumbnail(originalimg, Height, Width)
 
+         'output the image
+         OutputImageToStream(thumb, OutputStream, Quality)
+
+         'clean up originalImage (thmb is disposed in "OutputImageToSteeam"
+         originalimg.Dispose()
+      Catch ex As Exception
+         Throw New Exception("Error processing JPEG", ex)
+      End Try
+   End Sub
+
+   Private Sub OutputImageToStream(ByVal Image As System.Drawing.Image, ByVal OutputStream As Stream, ByVal Quality As Integer)
+      Try
          Dim codecEncoder As ImageCodecInfo = GetEncoder("image/jpeg")
          Dim encodeParams As New EncoderParameters(1)
          Dim qualityParam As New EncoderParameter(Imaging.Encoder.Quality, Quality)
          encodeParams.Param(0) = qualityParam
-         thumb.Save(OutputStream, codecEncoder, encodeParams)
-
-         originalimg.Dispose()
-         thumb.Dispose()
+         Image.Save(OutputStream, codecEncoder, encodeParams)
+         Image.Dispose()
       Catch ex As Exception
          Throw New Exception("Error processing JPEG", ex)
       End Try

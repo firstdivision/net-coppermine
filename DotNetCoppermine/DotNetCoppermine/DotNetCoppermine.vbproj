@@ -141,9 +141,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\libDotNetCoppermine\libDotNetCoppermine.vbproj">
+    <ProjectReference Include="..\libDotNetCoppermine\libMage.vbproj">
       <Project>{FB4809FD-3C3D-4531-8CD7-49837D74F59E}</Project>
-      <Name>libDotNetCoppermine</Name>
+      <Name>libMage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />

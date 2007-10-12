@@ -125,7 +125,7 @@ Partial Public Class _Default
                MyFile.Delete()
 
                Dim OutputStream As System.IO.FileStream = MyFile.Create
-               myImageManager.ResizeToJPEG(File.FullName, OutputStream, intQuality, Height, Width)
+               myImageManager.ResizeToJPEG(File.FullName, OutputStream, Height, Width, intQuality)
 
                dblTotalFileSize += MyFile.Length
                intTotalFiles += 1

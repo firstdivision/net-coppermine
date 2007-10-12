@@ -10,7 +10,7 @@ Public Partial Class DynamicImage
       If Request.QueryString("PercentReduction") <> "" Then
          myImageManager.ResizeToJPEG(CStr(Request.QueryString("OriginalImageURL")), Response.OutputStream, CDec(Request.QueryString("PercentReduction")), CInt(Request.QueryString("Quality")))
       Else
-         myImageManager.ResizeToJPEG(CStr(Request.QueryString("OriginalImageURL")), Response.OutputStream, CInt(Request.QueryString("Quality")), CInt(Request.QueryString("Height")), CInt(Request.QueryString("Width")))
+         myImageManager.ResizeToJPEG(CStr(Request.QueryString("OriginalImageURL")), Response.OutputStream, CInt(Request.QueryString("Height")), CInt(Request.QueryString("Width")), CInt(Request.QueryString("Quality")))
       End If
    End Sub
 
