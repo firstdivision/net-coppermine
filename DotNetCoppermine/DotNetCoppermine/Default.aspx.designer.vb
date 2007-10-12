@@ -49,6 +49,33 @@ Partial Public Class _Default
    Protected WithEvents HyperLink2 As Global.System.Web.UI.WebControls.HyperLink
 
    '''<summary>
+   '''txtQuality control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents txtQuality As Global.System.Web.UI.WebControls.TextBox
+
+   '''<summary>
+   '''RangeValidator1 control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents RangeValidator1 As Global.System.Web.UI.WebControls.RangeValidator
+
+   '''<summary>
+   '''RequiredFieldValidator1 control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents RequiredFieldValidator1 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+   '''<summary>
    '''txtWidth control.
    '''</summary>
    '''<remarks>
@@ -56,6 +83,24 @@ Partial Public Class _Default
    '''To modify move field declaration from designer file to code-behind file.
    '''</remarks>
    Protected WithEvents txtWidth As Global.System.Web.UI.WebControls.TextBox
+
+   '''<summary>
+   '''RangeValidator2 control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents RangeValidator2 As Global.System.Web.UI.WebControls.RangeValidator
+
+   '''<summary>
+   '''RequiredFieldValidator2 control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents RequiredFieldValidator2 As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
    '''<summary>
    '''txtHeight control.
@@ -67,22 +112,22 @@ Partial Public Class _Default
    Protected WithEvents txtHeight As Global.System.Web.UI.WebControls.TextBox
 
    '''<summary>
-   '''txtQuality control.
+   '''RangeValidator3 control.
    '''</summary>
    '''<remarks>
    '''Auto-generated field.
    '''To modify move field declaration from designer file to code-behind file.
    '''</remarks>
-   Protected WithEvents txtQuality As Global.System.Web.UI.WebControls.TextBox
+   Protected WithEvents RangeValidator3 As Global.System.Web.UI.WebControls.RangeValidator
 
    '''<summary>
-   '''txtPercentage control.
+   '''RequiredFieldValidator3 control.
    '''</summary>
    '''<remarks>
    '''Auto-generated field.
    '''To modify move field declaration from designer file to code-behind file.
    '''</remarks>
-   Protected WithEvents txtPercentage As Global.System.Web.UI.WebControls.TextBox
+   Protected WithEvents RequiredFieldValidator3 As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
    '''<summary>
    '''lnkResize control.
@@ -101,6 +146,69 @@ Partial Public Class _Default
    '''To modify move field declaration from designer file to code-behind file.
    '''</remarks>
    Protected WithEvents lnkSave As Global.System.Web.UI.WebControls.LinkButton
+
+   '''<summary>
+   '''txtLongestSide control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents txtLongestSide As Global.System.Web.UI.WebControls.TextBox
+
+   '''<summary>
+   '''RangeValidator4 control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents RangeValidator4 As Global.System.Web.UI.WebControls.RangeValidator
+
+   '''<summary>
+   '''RequiredFieldValidator4 control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents RequiredFieldValidator4 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+   '''<summary>
+   '''lnkResizeLongestSide control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents lnkResizeLongestSide As Global.System.Web.UI.WebControls.LinkButton
+
+   '''<summary>
+   '''txtPercentage control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents txtPercentage As Global.System.Web.UI.WebControls.TextBox
+
+   '''<summary>
+   '''RangeValidator5 control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents RangeValidator5 As Global.System.Web.UI.WebControls.RangeValidator
+
+   '''<summary>
+   '''RequiredFieldValidator5 control.
+   '''</summary>
+   '''<remarks>
+   '''Auto-generated field.
+   '''To modify move field declaration from designer file to code-behind file.
+   '''</remarks>
+   Protected WithEvents RequiredFieldValidator5 As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
    '''<summary>
    '''lnkPercentReduction control.

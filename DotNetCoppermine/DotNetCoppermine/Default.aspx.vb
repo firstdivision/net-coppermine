@@ -22,6 +22,22 @@ Partial Public Class _Default
       SaveToDisk(txtQuality.Text, txtHeight.Text, txtWidth.Text)
    End Sub
 
+   Protected Sub lnkResizeLongestSide_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lnkResizeLongestSide.Click
+      Try
+         Dim myDirOriginals As New IO.DirectoryInfo(Server.MapPath("Images"))
+         Dim MyImage As New Image
+         For Each File As System.IO.FileInfo In myDirOriginals.GetFiles
+            If File.Extension.ToLower = ".jpg" Then
+               MyImage = New Image
+               MyImage.ImageUrl = "DynamicImage.aspx?LongestLength=" & Me.txtLongestSide.Text & "&OriginalImageURL=" & File.FullName & "&Quality=" & txtQuality.Text
+               plhResize.Controls.Add(MyImage)
+            End If
+         Next
+      Catch ex As Exception
+         Response.Write(ex.ToString)
+      End Try
+   End Sub
+
    Protected Sub lnkPercentReduction_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lnkPercentReduction.Click
       Try
          Dim myDirOriginals As New IO.DirectoryInfo(Server.MapPath("Images"))
@@ -146,4 +162,5 @@ Partial Public Class _Default
    End Function
 
  
+
 End Class

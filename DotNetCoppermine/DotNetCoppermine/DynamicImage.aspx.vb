@@ -7,11 +7,16 @@ Public Partial Class DynamicImage
       Response.Clear()
       Response.ContentType = "image/jpeg"
 
-      If Request.QueryString("PercentReduction") <> "" Then
-         myImageManager.ResizeToJPEG(CStr(Request.QueryString("OriginalImageURL")), Response.OutputStream, CDec(Request.QueryString("PercentReduction")), CInt(Request.QueryString("Quality")))
-      Else
-         myImageManager.ResizeToJPEG(CStr(Request.QueryString("OriginalImageURL")), Response.OutputStream, CInt(Request.QueryString("Height")), CInt(Request.QueryString("Width")), CInt(Request.QueryString("Quality")))
-      End If
+      Select Case True
+         Case Request.QueryString("LongestLength") <> ""
+            myImageManager.ResizeToJPEG(CInt(Request.QueryString("LongestLength")), CStr(Request.QueryString("OriginalImageURL")), Response.OutputStream, CInt(Request.QueryString("Quality")))
+
+         Case Request.QueryString("PercentReduction") <> ""
+            myImageManager.ResizeToJPEG(CStr(Request.QueryString("OriginalImageURL")), Response.OutputStream, CDec(Request.QueryString("PercentReduction")), CInt(Request.QueryString("Quality")))
+
+         Case Else
+            myImageManager.ResizeToJPEG(CStr(Request.QueryString("OriginalImageURL")), Response.OutputStream, CInt(Request.QueryString("Height")), CInt(Request.QueryString("Width")), CInt(Request.QueryString("Quality")))
+      End Select
    End Sub
 
 End Class
