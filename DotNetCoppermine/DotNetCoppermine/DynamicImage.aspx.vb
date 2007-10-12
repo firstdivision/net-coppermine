@@ -2,7 +2,7 @@ Public Partial Class DynamicImage
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-      Dim myImageManager As New libDotNetCoppermine.ImageResizer
+      Dim myImageManager As New libMage.ImageResizer
 
       Response.Clear()
       Response.ContentType = "image/jpeg"

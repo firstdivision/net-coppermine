@@ -106,7 +106,7 @@ Partial Public Class _Default
 
    Private Function SaveToDisk(ByVal intQuality As Integer, ByVal Height As Integer, ByVal Width As Integer, Optional ByVal ReturnFileSize As Boolean = False) As String
       Try
-         Dim myImageManager As New libDotNetCoppermine.ImageResizer
+         Dim myImageManager As New libMage.ImageResizer
          Dim myDirOriginals As New IO.DirectoryInfo(Server.MapPath("Images"))
          Dim myDirOutput As New IO.DirectoryInfo(Server.MapPath("Images\Thumbs"))
          Dim dblTotalFileSize As Double

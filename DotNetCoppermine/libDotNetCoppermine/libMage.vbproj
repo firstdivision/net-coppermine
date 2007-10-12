@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FB4809FD-3C3D-4531-8CD7-49837D74F59E}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>libDotNetCoppermine</RootNamespace>
-    <AssemblyName>libDotNetCoppermine</AssemblyName>
+    <RootNamespace>libMage</RootNamespace>
+    <AssemblyName>libMage</AssemblyName>
     <MyType>Windows</MyType>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>libDotNetCoppermine.xml</DocumentationFile>
+    <DocumentationFile>libMage.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -30,7 +30,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>libDotNetCoppermine.xml</DocumentationFile>
+    <DocumentationFile>libMage.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
