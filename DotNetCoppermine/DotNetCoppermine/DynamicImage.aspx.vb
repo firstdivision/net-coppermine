@@ -6,7 +6,12 @@ Public Partial Class DynamicImage
 
       Response.Clear()
       Response.ContentType = "image/jpeg"
-      myImageManager.ResizeToJPEG(Request.QueryString("OriginalImageURL"), Response.OutputStream, Request.QueryString("Quality"), Request.QueryString("Height"), Request.QueryString("Width"))
-    End Sub
+
+      If Request.QueryString("PercentReduction") <> "" Then
+         myImageManager.ResizeToJPEG(CStr(Request.QueryString("OriginalImageURL")), Response.OutputStream, CDec(Request.QueryString("PercentReduction")), CInt(Request.QueryString("Quality")))
+      Else
+         myImageManager.ResizeToJPEG(CStr(Request.QueryString("OriginalImageURL")), Response.OutputStream, CInt(Request.QueryString("Quality")), CInt(Request.QueryString("Height")), CInt(Request.QueryString("Width")))
+      End If
+   End Sub
 
 End Class

@@ -20,11 +20,16 @@
         <asp:TextBox ID="txtHeight" runat="server"
             Text="200"></asp:TextBox><br />
 		New Quality: <asp:TextBox id="txtQuality" runat="Server" Text="100"></asp:TextBox><br />
+        New Size by Percentage:
+        <asp:TextBox ID="txtPercentage" runat="server"
+            Text="100"></asp:TextBox><br />
 		<asp:LinkButton ID="lnkResize" runat="Server" Text="Resize"></asp:LinkButton> | 
 		<asp:LinkButton ID="lnkSave" runat="Server" Text="Save"></asp:LinkButton>
+        |<asp:LinkButton ID="lnkPercentReduction" runat="server"
+            Text="Percent Reduction"></asp:LinkButton>
         |
         <asp:LinkButton ID="lnkTest" runat="server"
-            Text="TestPerformace"></asp:LinkButton><br />
+            Text="TestPerformace" Enabled="False"></asp:LinkButton><br />
         <br />
 	    <asp:placeholder ID="plhResize" runat="server"></asp:placeholder>
     </form>

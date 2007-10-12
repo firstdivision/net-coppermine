@@ -22,6 +22,22 @@ Partial Public Class _Default
       SaveToDisk(txtQuality.Text, txtHeight.Text, txtWidth.Text)
    End Sub
 
+   Protected Sub lnkPercentReduction_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lnkPercentReduction.Click
+      Try
+         Dim myDirOriginals As New IO.DirectoryInfo(Server.MapPath("Images"))
+         Dim MyImage As New Image
+         For Each File As System.IO.FileInfo In myDirOriginals.GetFiles
+            If File.Extension.ToLower = ".jpg" Then
+               MyImage = New Image
+               MyImage.ImageUrl = "DynamicImage.aspx?OriginalImageURL=" & File.FullName & "&PercentReduction=" & txtPercentage.Text & "&Quality=" & txtQuality.Text
+               plhResize.Controls.Add(MyImage)
+            End If
+         Next
+      Catch ex As Exception
+         Response.Write(ex.ToString)
+      End Try
+   End Sub
+
    Protected Sub lnkTest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lnkTest.Click
       Dim dtResults As New DataTable
       dtResults.Columns.Add("Quality")
@@ -128,4 +144,6 @@ Partial Public Class _Default
          Response.Write(ex.ToString)
       End Try
    End Function
+
+ 
 End Class

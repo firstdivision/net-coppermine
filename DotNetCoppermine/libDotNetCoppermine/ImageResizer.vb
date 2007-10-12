@@ -8,16 +8,54 @@ Public Class ImageResizer
    ' Code adapted from original article at http://www.glennjones.net/posts/Post.aspx?PostID=799         '
    '----------------------------------------------------------------------------------------------------'
 
-   Public Sub ResizeToJPEG(ByVal ImagePath As String, ByRef OutputStream As Stream, Optional ByVal Quality As Integer = 100, Optional ByVal height As Integer = -1, Optional ByVal width As Integer = -1)
+   ''' <summary>
+   ''' Resizes a JPEG based on a supplied quality, and a percentage reduction or enlargement.
+   ''' </summary>
+   ''' <param name="OriginalImagePath">The path to the original JPEG file.</param>
+   ''' <param name="OutputStream">The stream that the new image should be resized to (HTTPResponse or FileStream, etc)</param>
+   ''' <param name="PercentageToResize">Percentage to resize (.50 for 50 percent)</param>
+   ''' <param name="Quality">Optional quality, 0 to 100, for new JPEG. (Default 100%)</param>
+   ''' <remarks></remarks>
+   Public Overloads Sub ResizeToJPEG(ByVal OriginalImagePath As String, ByRef OutputStream As Stream, ByVal PercentageToResize As Decimal, Optional ByVal Quality As Integer = 100)
 
       Dim originalimg, thumb As System.Drawing.Image
       Try
-         originalimg = Image.FromFile(ImagePath) ' Fetch User Filename
+         originalimg = Image.FromFile(OriginalImagePath) ' Fetch User Filename
 
-         'If height = -1 Then height = originalimg.Height
-         'If width = -1 Then width = originalimg.Width
+         'do the actual resize
+         thumb = MakeThumbnail(originalimg, originalimg.Height * PercentageToResize, originalimg.Width * PercentageToResize)
 
-         thumb = MakeThumbnail(originalimg, height, width)
+         Dim codecEncoder As ImageCodecInfo = GetEncoder("image/jpeg")
+         Dim encodeParams As New EncoderParameters(1)
+         Dim qualityParam As New EncoderParameter(Imaging.Encoder.Quality, Quality)
+         encodeParams.Param(0) = qualityParam
+         thumb.Save(OutputStream, codecEncoder, encodeParams)
+
+         originalimg.Dispose()
+         thumb.Dispose()
+      Catch ex As Exception
+         Throw New Exception("Error processing JPEG", ex)
+      End Try
+   End Sub
+
+
+   ''' <summary>
+   ''' Resizes a JPEG based on a supplied quality, height and width.
+   ''' </summary>
+   ''' <param name="OriginalImagePath">The path to the original JPEG file.</param>
+   ''' <param name="OutputStream">The stream that the new image should be resized to (HTTPResponse or FileStream, etc)</param>
+   ''' <param name="Height">Desired Height for new JPEG.</param>
+   ''' <param name="Width">Desired Height for new JPEG.</param>
+   ''' <param name="Quality">Optional quality, 0 to 100, for new JPEG. (Default 100%)</param>
+   ''' <remarks>If only one of height and width is greater than zero, the other dimension will be scaled proportionally.</remarks>
+   Public Overloads Sub ResizeToJPEG(ByVal OriginalImagePath As String, ByRef OutputStream As Stream, ByVal Height As Integer, ByVal Width As Integer, Optional ByVal Quality As Integer = 100)
+
+      Dim originalimg, thumb As System.Drawing.Image
+      Try
+         originalimg = Image.FromFile(OriginalImagePath) ' Fetch User Filename
+
+         'do the actual resize
+         thumb = MakeThumbnail(originalimg, Height, Width)
 
          Dim codecEncoder As ImageCodecInfo = GetEncoder("image/jpeg")
          Dim encodeParams As New EncoderParameters(1)
