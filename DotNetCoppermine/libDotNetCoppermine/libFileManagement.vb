@@ -4,6 +4,10 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Public Class ImageResizer
 
+   '----------------------------------------------------------------------------------------------------'
+   ' Code adapted from original article at http://www.glennjones.net/posts/Post.aspx?PostID=799         '
+   '----------------------------------------------------------------------------------------------------'
+
    Public Sub ResizeToJPEG(ByVal ImagePath As String, ByRef OutputStream As Stream, Optional ByVal Quality As Integer = 100, Optional ByVal height As Integer = -1, Optional ByVal width As Integer = -1)
 
       Dim originalimg, thumb As System.Drawing.Image
