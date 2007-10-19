@@ -13,9 +13,15 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "libMage", "libDotNetCopperm
 		Release.AspNetCompiler.Debug = "False"
 	EndProjectSection
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickPhotoResize", "QuickPhotoResize\QuickPhotoResize.vbproj", "{B518BF97-7185-46C8-9130-2B97F0DC076A}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -25,6 +31,9 @@ Global
 		SccProjectUniqueName2 = libDotNetCoppermine\\libMage.vbproj
 		SccProjectName2 = libDotNetCoppermine
 		SccLocalPath2 = libDotNetCoppermine
+		SccProjectUniqueName3 = QuickPhotoResize\\QuickPhotoResize.vbproj
+		SccProjectName3 = QuickPhotoResize
+		SccLocalPath3 = QuickPhotoResize
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +48,10 @@ Global
 		{FB4809FD-3C3D-4531-8CD7-49837D74F59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB4809FD-3C3D-4531-8CD7-49837D74F59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB4809FD-3C3D-4531-8CD7-49837D74F59E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B518BF97-7185-46C8-9130-2B97F0DC076A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B518BF97-7185-46C8-9130-2B97F0DC076A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B518BF97-7185-46C8-9130-2B97F0DC076A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B518BF97-7185-46C8-9130-2B97F0DC076A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
