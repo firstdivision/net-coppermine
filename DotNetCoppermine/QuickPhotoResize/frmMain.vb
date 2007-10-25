@@ -29,6 +29,8 @@ Public Class frmMain
 
          If Not myDirOutput.Exists Then myDirOutput.Create()
 
+         'get the original image
+         Dim OriginalImg As Image = Image.FromFile(myOriginal.FullName) ' Fetch User Filenam
 
          Dim MyFile As IO.FileInfo
 
@@ -39,7 +41,14 @@ Public Class frmMain
             MyFile.Delete()
 
             Dim OutputStream As System.IO.FileStream = MyFile.Create
-            myImageManager.ResizeToJPEG(myOriginal.FullName, OutputStream, Height, -1, intQuality)
+
+            'resize the image based on its longest side to preserve aspect ratio
+            If OriginalImg.Width > OriginalImg.Height Then
+               myImageManager.ResizeToJPEG(myOriginal.FullName, OutputStream, -1, Width, intQuality)
+            Else
+               myImageManager.ResizeToJPEG(myOriginal.FullName, OutputStream, Height, -1, intQuality)
+            End If
+
 
             dblTotalFileSize += MyFile.Length
             intTotalFiles += 1
@@ -54,6 +63,12 @@ Public Class frmMain
    End Sub
 
    Private Sub btnResize_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnResize.Click
-      SaveToDisk(trkQuality.Value, 800, 600)
+
+      'For each checked box save the thumb
+      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 480, 640)
+      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 480, 640)
+      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 480, 640)
+      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 480, 640)
    End Sub
+
 End Class

@@ -30,24 +30,25 @@ Partial Class frmMain
       Me.Label2 = New System.Windows.Forms.Label
       Me.Label1 = New System.Windows.Forms.Label
       Me.GroupBox2 = New System.Windows.Forms.GroupBox
+      Me.chk640X480 = New System.Windows.Forms.CheckBox
+      Me.chk800X600 = New System.Windows.Forms.CheckBox
       Me.GroupBox3 = New System.Windows.Forms.GroupBox
+      Me.picPreview = New System.Windows.Forms.PictureBox
       Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
       Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog
-      Me.chk800X600 = New System.Windows.Forms.CheckBox
-      Me.chk640X480 = New System.Windows.Forms.CheckBox
       Me.GroupBox4 = New System.Windows.Forms.GroupBox
       Me.trkQuality = New System.Windows.Forms.TrackBar
       Me.btnResize = New System.Windows.Forms.Button
-      Me.picPreview = New System.Windows.Forms.PictureBox
       Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
-      Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel
       Me.prgResizeProgress = New System.Windows.Forms.ToolStripProgressBar
+      Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel
+      Me.CheckBox1 = New System.Windows.Forms.CheckBox
       Me.GroupBox1.SuspendLayout()
       Me.GroupBox2.SuspendLayout()
       Me.GroupBox3.SuspendLayout()
+      CType(Me.picPreview, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.GroupBox4.SuspendLayout()
       CType(Me.trkQuality, System.ComponentModel.ISupportInitialize).BeginInit()
-      CType(Me.picPreview, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.StatusStrip1.SuspendLayout()
       Me.SuspendLayout()
       '
@@ -120,6 +121,7 @@ Partial Class frmMain
       '
       'GroupBox2
       '
+      Me.GroupBox2.Controls.Add(Me.CheckBox1)
       Me.GroupBox2.Controls.Add(Me.chk640X480)
       Me.GroupBox2.Controls.Add(Me.chk800X600)
       Me.GroupBox2.Location = New System.Drawing.Point(14, 106)
@@ -128,6 +130,30 @@ Partial Class frmMain
       Me.GroupBox2.TabIndex = 1
       Me.GroupBox2.TabStop = False
       Me.GroupBox2.Text = "Output Sizes"
+      '
+      'chk640X480
+      '
+      Me.chk640X480.AutoSize = True
+      Me.chk640X480.Checked = True
+      Me.chk640X480.CheckState = System.Windows.Forms.CheckState.Checked
+      Me.chk640X480.Location = New System.Drawing.Point(19, 19)
+      Me.chk640X480.Name = "chk640X480"
+      Me.chk640X480.Size = New System.Drawing.Size(75, 17)
+      Me.chk640X480.TabIndex = 1
+      Me.chk640X480.Text = "640 X 480"
+      Me.chk640X480.UseVisualStyleBackColor = True
+      '
+      'chk800X600
+      '
+      Me.chk800X600.AutoSize = True
+      Me.chk800X600.Checked = True
+      Me.chk800X600.CheckState = System.Windows.Forms.CheckState.Checked
+      Me.chk800X600.Location = New System.Drawing.Point(19, 42)
+      Me.chk800X600.Name = "chk800X600"
+      Me.chk800X600.Size = New System.Drawing.Size(75, 17)
+      Me.chk800X600.TabIndex = 0
+      Me.chk800X600.Text = "800 X 600"
+      Me.chk800X600.UseVisualStyleBackColor = True
       '
       'GroupBox3
       '
@@ -139,33 +165,17 @@ Partial Class frmMain
       Me.GroupBox3.TabStop = False
       Me.GroupBox3.Text = "Preview"
       '
+      'picPreview
+      '
+      Me.picPreview.Location = New System.Drawing.Point(6, 19)
+      Me.picPreview.Name = "picPreview"
+      Me.picPreview.Size = New System.Drawing.Size(245, 147)
+      Me.picPreview.TabIndex = 0
+      Me.picPreview.TabStop = False
+      '
       'OpenFileDialog1
       '
       Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-      '
-      'chk800X600
-      '
-      Me.chk800X600.AutoSize = True
-      Me.chk800X600.Checked = True
-      Me.chk800X600.CheckState = System.Windows.Forms.CheckState.Checked
-      Me.chk800X600.Location = New System.Drawing.Point(19, 56)
-      Me.chk800X600.Name = "chk800X600"
-      Me.chk800X600.Size = New System.Drawing.Size(75, 17)
-      Me.chk800X600.TabIndex = 0
-      Me.chk800X600.Text = "800 X 600"
-      Me.chk800X600.UseVisualStyleBackColor = True
-      '
-      'chk640X480
-      '
-      Me.chk640X480.AutoSize = True
-      Me.chk640X480.Checked = True
-      Me.chk640X480.CheckState = System.Windows.Forms.CheckState.Checked
-      Me.chk640X480.Location = New System.Drawing.Point(19, 33)
-      Me.chk640X480.Name = "chk640X480"
-      Me.chk640X480.Size = New System.Drawing.Size(75, 17)
-      Me.chk640X480.TabIndex = 1
-      Me.chk640X480.Text = "640 X 480"
-      Me.chk640X480.UseVisualStyleBackColor = True
       '
       'GroupBox4
       '
@@ -195,14 +205,6 @@ Partial Class frmMain
       Me.btnResize.Text = "Resize"
       Me.btnResize.UseVisualStyleBackColor = True
       '
-      'picPreview
-      '
-      Me.picPreview.Location = New System.Drawing.Point(6, 19)
-      Me.picPreview.Name = "picPreview"
-      Me.picPreview.Size = New System.Drawing.Size(245, 147)
-      Me.picPreview.TabIndex = 0
-      Me.picPreview.TabStop = False
-      '
       'StatusStrip1
       '
       Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.prgResizeProgress, Me.lblStatus})
@@ -213,16 +215,28 @@ Partial Class frmMain
       Me.StatusStrip1.TabIndex = 5
       Me.StatusStrip1.Text = "StatusStrip1"
       '
+      'prgResizeProgress
+      '
+      Me.prgResizeProgress.Name = "prgResizeProgress"
+      Me.prgResizeProgress.Size = New System.Drawing.Size(100, 16)
+      '
       'lblStatus
       '
       Me.lblStatus.Name = "lblStatus"
       Me.lblStatus.Size = New System.Drawing.Size(50, 17)
       Me.lblStatus.Text = "Status..."
       '
-      'prgResizeProgress
+      'CheckBox1
       '
-      Me.prgResizeProgress.Name = "prgResizeProgress"
-      Me.prgResizeProgress.Size = New System.Drawing.Size(100, 16)
+      Me.CheckBox1.AutoSize = True
+      Me.CheckBox1.Checked = True
+      Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
+      Me.CheckBox1.Location = New System.Drawing.Point(19, 65)
+      Me.CheckBox1.Name = "CheckBox1"
+      Me.CheckBox1.Size = New System.Drawing.Size(81, 17)
+      Me.CheckBox1.TabIndex = 2
+      Me.CheckBox1.Text = "1024 X 768"
+      Me.CheckBox1.UseVisualStyleBackColor = True
       '
       'frmMain
       '
@@ -244,10 +258,10 @@ Partial Class frmMain
       Me.GroupBox2.ResumeLayout(False)
       Me.GroupBox2.PerformLayout()
       Me.GroupBox3.ResumeLayout(False)
+      CType(Me.picPreview, System.ComponentModel.ISupportInitialize).EndInit()
       Me.GroupBox4.ResumeLayout(False)
       Me.GroupBox4.PerformLayout()
       CType(Me.trkQuality, System.ComponentModel.ISupportInitialize).EndInit()
-      CType(Me.picPreview, System.ComponentModel.ISupportInitialize).EndInit()
       Me.StatusStrip1.ResumeLayout(False)
       Me.StatusStrip1.PerformLayout()
       Me.ResumeLayout(False)
@@ -274,5 +288,6 @@ Partial Class frmMain
    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
    Friend WithEvents lblStatus As System.Windows.Forms.ToolStripStatusLabel
    Friend WithEvents prgResizeProgress As System.Windows.Forms.ToolStripProgressBar
+   Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
 
 End Class
