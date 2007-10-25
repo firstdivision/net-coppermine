@@ -8,6 +8,9 @@ Public Class frmMain
       If Not FolderBrowserDialog1.SelectedPath = "" Then
          Me.lblOutput.Text = FolderBrowserDialog1.SelectedPath
       End If
+
+      Me.btnPreview.Enabled = lblInput.Text <> "" And lblOutput.Text <> ""
+      Me.btnResize.Enabled = lblInput.Text <> "" And lblOutput.Text <> ""
    End Sub
 
    Private Sub btnBrowseInput_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowseInput.Click
@@ -20,11 +23,14 @@ Public Class frmMain
 
       _OriginalImg = Image.FromFile(lblInput.Text)
 
+      Me.btnPreview.Enabled = lblInput.Text <> "" And lblOutput.Text <> ""
+      Me.btnResize.Enabled = lblInput.Text <> "" And lblOutput.Text <> ""
+
    End Sub
 
 
 
-   Private Sub SaveToDisk(ByVal intQuality As Integer, ByVal Width As Integer, ByVal Height As Integer, Optional ByVal ReturnFileSize As Boolean = False)
+   Private Sub SaveToDisk(ByVal intQuality As Integer, ByVal Width As Integer, ByVal Height As Integer)
       Try
          Dim myImageManager As New libMage.ImageResizer
          Dim myOriginal As New IO.FileInfo(lblInput.Text)
@@ -72,19 +78,51 @@ Public Class frmMain
    Private Sub btnResize_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnResize.Click
 
       'For each checked box save the thumb
+      Dim arlSizes As New ArrayList
+      Dim i As Integer
 
       '4:3 sizes
-      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 640, 480)
-      If Me.chk800X600.Checked Then SaveToDisk(trkQuality.Value, 800, 600)
-      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 1024, 768)
-      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 1280, 1024)
-
+      If Me.chk640X480.Checked Then arlSizes.Add(New ImageDimension(640, 480))
+      If Me.chk800X600.Checked Then arlSizes.Add(New ImageDimension(800, 600))
+      If Me.chk1024X768.Checked Then arlSizes.Add(New ImageDimension(1024, 768))
+      If Me.chk1280X1024.Checked Then arlSizes.Add(New ImageDimension(1280, 1024))
 
       'Widescreen Sizes
-      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 1920, 1200)
-      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 1600, 1200)
+      If Me.chk1920X1200.Checked Then arlSizes.Add(New ImageDimension(1920, 1200))
+      If Me.chk1600X1200.Checked Then arlSizes.Add(New ImageDimension(1600, 1200))
+
+      If arlSizes.Count > 0 Then
+         prgResizeProgress.Minimum = 0
+         prgResizeProgress.Maximum = arlSizes.Count - 1
+
+         lblStatus.Text = "Processing images..."
+
+         For Each Item As ImageDimension In arlSizes
+            SaveToDisk(Me.trkQuality.Value, Item._Width, Item._Height)
+            prgResizeProgress.Value = i
+
+            i += 1
+         Next
+
+         prgResizeProgress.Value = prgResizeProgress.Maximum
+         lblStatus.Text = "Done."
+
+      End If
+
+
 
    End Sub
+
+   Public Structure ImageDimension
+
+      Public Sub New(ByVal Width As Integer, ByVal Height As Integer)
+         _Width = Width
+         _Height = Height
+      End Sub
+
+      Dim _Width As Integer
+      Dim _Height As Integer
+   End Structure
 
    Private Sub btnPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreview.Click
       Dim MyPreview As New frmPreview
@@ -110,4 +148,5 @@ Public Class frmMain
       MyPreview.LoadPreview(lblInput.Text, trkQuality.Value)
       MyPreview.ShowDialog(Me)
    End Sub
+
 End Class

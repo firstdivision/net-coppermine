@@ -30,7 +30,10 @@ Partial Class frmMain
       Me.Label2 = New System.Windows.Forms.Label
       Me.Label1 = New System.Windows.Forms.Label
       Me.GroupBox2 = New System.Windows.Forms.GroupBox
-      Me.CheckBox1 = New System.Windows.Forms.CheckBox
+      Me.chk1920X1200 = New System.Windows.Forms.CheckBox
+      Me.chk1600X1200 = New System.Windows.Forms.CheckBox
+      Me.chk1280X1024 = New System.Windows.Forms.CheckBox
+      Me.chk1024X768 = New System.Windows.Forms.CheckBox
       Me.chk640X480 = New System.Windows.Forms.CheckBox
       Me.chk800X600 = New System.Windows.Forms.CheckBox
       Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
@@ -118,27 +121,66 @@ Partial Class frmMain
       '
       'GroupBox2
       '
-      Me.GroupBox2.Controls.Add(Me.CheckBox1)
+      Me.GroupBox2.Controls.Add(Me.chk1920X1200)
+      Me.GroupBox2.Controls.Add(Me.chk1600X1200)
+      Me.GroupBox2.Controls.Add(Me.chk1280X1024)
+      Me.GroupBox2.Controls.Add(Me.chk1024X768)
       Me.GroupBox2.Controls.Add(Me.chk640X480)
       Me.GroupBox2.Controls.Add(Me.chk800X600)
       Me.GroupBox2.Location = New System.Drawing.Point(14, 106)
       Me.GroupBox2.Name = "GroupBox2"
-      Me.GroupBox2.Size = New System.Drawing.Size(523, 101)
+      Me.GroupBox2.Size = New System.Drawing.Size(258, 139)
       Me.GroupBox2.TabIndex = 1
       Me.GroupBox2.TabStop = False
       Me.GroupBox2.Text = "Output Sizes"
       '
-      'CheckBox1
+      'chk1920X1200
       '
-      Me.CheckBox1.AutoSize = True
-      Me.CheckBox1.Checked = True
-      Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
-      Me.CheckBox1.Location = New System.Drawing.Point(19, 65)
-      Me.CheckBox1.Name = "CheckBox1"
-      Me.CheckBox1.Size = New System.Drawing.Size(81, 17)
-      Me.CheckBox1.TabIndex = 2
-      Me.CheckBox1.Text = "1024 X 768"
-      Me.CheckBox1.UseVisualStyleBackColor = True
+      Me.chk1920X1200.AutoSize = True
+      Me.chk1920X1200.Checked = True
+      Me.chk1920X1200.CheckState = System.Windows.Forms.CheckState.Checked
+      Me.chk1920X1200.Location = New System.Drawing.Point(153, 19)
+      Me.chk1920X1200.Name = "chk1920X1200"
+      Me.chk1920X1200.Size = New System.Drawing.Size(87, 17)
+      Me.chk1920X1200.TabIndex = 5
+      Me.chk1920X1200.Text = "1920 X 1200"
+      Me.chk1920X1200.UseVisualStyleBackColor = True
+      '
+      'chk1600X1200
+      '
+      Me.chk1600X1200.AutoSize = True
+      Me.chk1600X1200.Checked = True
+      Me.chk1600X1200.CheckState = System.Windows.Forms.CheckState.Checked
+      Me.chk1600X1200.Location = New System.Drawing.Point(153, 42)
+      Me.chk1600X1200.Name = "chk1600X1200"
+      Me.chk1600X1200.Size = New System.Drawing.Size(87, 17)
+      Me.chk1600X1200.TabIndex = 4
+      Me.chk1600X1200.Text = "1600 X 1200"
+      Me.chk1600X1200.UseVisualStyleBackColor = True
+      '
+      'chk1280X1024
+      '
+      Me.chk1280X1024.AutoSize = True
+      Me.chk1280X1024.Checked = True
+      Me.chk1280X1024.CheckState = System.Windows.Forms.CheckState.Checked
+      Me.chk1280X1024.Location = New System.Drawing.Point(19, 88)
+      Me.chk1280X1024.Name = "chk1280X1024"
+      Me.chk1280X1024.Size = New System.Drawing.Size(87, 17)
+      Me.chk1280X1024.TabIndex = 3
+      Me.chk1280X1024.Text = "1280 X 1024"
+      Me.chk1280X1024.UseVisualStyleBackColor = True
+      '
+      'chk1024X768
+      '
+      Me.chk1024X768.AutoSize = True
+      Me.chk1024X768.Checked = True
+      Me.chk1024X768.CheckState = System.Windows.Forms.CheckState.Checked
+      Me.chk1024X768.Location = New System.Drawing.Point(19, 65)
+      Me.chk1024X768.Name = "chk1024X768"
+      Me.chk1024X768.Size = New System.Drawing.Size(81, 17)
+      Me.chk1024X768.TabIndex = 2
+      Me.chk1024X768.Text = "1024 X 768"
+      Me.chk1024X768.UseVisualStyleBackColor = True
       '
       'chk640X480
       '
@@ -171,9 +213,9 @@ Partial Class frmMain
       'GroupBox4
       '
       Me.GroupBox4.Controls.Add(Me.trkQuality)
-      Me.GroupBox4.Location = New System.Drawing.Point(12, 213)
+      Me.GroupBox4.Location = New System.Drawing.Point(290, 123)
       Me.GroupBox4.Name = "GroupBox4"
-      Me.GroupBox4.Size = New System.Drawing.Size(260, 65)
+      Me.GroupBox4.Size = New System.Drawing.Size(247, 65)
       Me.GroupBox4.TabIndex = 3
       Me.GroupBox4.TabStop = False
       Me.GroupBox4.Text = "Output Qualilty"
@@ -183,13 +225,14 @@ Partial Class frmMain
       Me.trkQuality.Location = New System.Drawing.Point(21, 19)
       Me.trkQuality.Maximum = 100
       Me.trkQuality.Name = "trkQuality"
-      Me.trkQuality.Size = New System.Drawing.Size(228, 45)
+      Me.trkQuality.Size = New System.Drawing.Size(205, 45)
       Me.trkQuality.TabIndex = 0
       Me.trkQuality.Value = 80
       '
       'btnResize
       '
-      Me.btnResize.Location = New System.Drawing.Point(463, 213)
+      Me.btnResize.Enabled = False
+      Me.btnResize.Location = New System.Drawing.Point(441, 205)
       Me.btnResize.Name = "btnResize"
       Me.btnResize.Size = New System.Drawing.Size(75, 23)
       Me.btnResize.TabIndex = 4
@@ -199,7 +242,7 @@ Partial Class frmMain
       'StatusStrip1
       '
       Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.prgResizeProgress, Me.lblStatus})
-      Me.StatusStrip1.Location = New System.Drawing.Point(0, 310)
+      Me.StatusStrip1.Location = New System.Drawing.Point(0, 261)
       Me.StatusStrip1.Name = "StatusStrip1"
       Me.StatusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
       Me.StatusStrip1.Size = New System.Drawing.Size(550, 22)
@@ -220,7 +263,8 @@ Partial Class frmMain
       '
       'btnPreview
       '
-      Me.btnPreview.Location = New System.Drawing.Point(360, 213)
+      Me.btnPreview.Enabled = False
+      Me.btnPreview.Location = New System.Drawing.Point(338, 205)
       Me.btnPreview.Name = "btnPreview"
       Me.btnPreview.Size = New System.Drawing.Size(97, 23)
       Me.btnPreview.TabIndex = 6
@@ -231,7 +275,7 @@ Partial Class frmMain
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(550, 332)
+      Me.ClientSize = New System.Drawing.Size(550, 283)
       Me.Controls.Add(Me.btnPreview)
       Me.Controls.Add(Me.StatusStrip1)
       Me.Controls.Add(Me.btnResize)
@@ -273,7 +317,10 @@ Partial Class frmMain
    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
    Friend WithEvents lblStatus As System.Windows.Forms.ToolStripStatusLabel
    Friend WithEvents prgResizeProgress As System.Windows.Forms.ToolStripProgressBar
-   Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+   Friend WithEvents chk1024X768 As System.Windows.Forms.CheckBox
    Friend WithEvents btnPreview As System.Windows.Forms.Button
+   Friend WithEvents chk1280X1024 As System.Windows.Forms.CheckBox
+   Friend WithEvents chk1920X1200 As System.Windows.Forms.CheckBox
+   Friend WithEvents chk1600X1200 As System.Windows.Forms.CheckBox
 
 End Class

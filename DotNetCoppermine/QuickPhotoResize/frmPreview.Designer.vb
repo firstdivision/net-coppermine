@@ -25,9 +25,9 @@ Partial Class frmPreview
       Me.SplitContainer1 = New System.Windows.Forms.SplitContainer
       Me.picPreview = New System.Windows.Forms.PictureBox
       Me.SplitContainer2 = New System.Windows.Forms.SplitContainer
+      Me.trkQuality = New System.Windows.Forms.TrackBar
       Me.lblQuality = New System.Windows.Forms.Label
       Me.btnOk = New System.Windows.Forms.Button
-      Me.trkQuality = New System.Windows.Forms.TrackBar
       Me.SplitContainer1.Panel1.SuspendLayout()
       Me.SplitContainer1.Panel2.SuspendLayout()
       Me.SplitContainer1.SuspendLayout()
@@ -85,6 +85,15 @@ Partial Class frmPreview
       Me.SplitContainer2.SplitterDistance = 491
       Me.SplitContainer2.TabIndex = 0
       '
+      'trkQuality
+      '
+      Me.trkQuality.Dock = System.Windows.Forms.DockStyle.Fill
+      Me.trkQuality.Location = New System.Drawing.Point(0, 0)
+      Me.trkQuality.Maximum = 100
+      Me.trkQuality.Name = "trkQuality"
+      Me.trkQuality.Size = New System.Drawing.Size(491, 43)
+      Me.trkQuality.TabIndex = 3
+      '
       'lblQuality
       '
       Me.lblQuality.Location = New System.Drawing.Point(3, 13)
@@ -101,15 +110,6 @@ Partial Class frmPreview
       Me.btnOk.TabIndex = 4
       Me.btnOk.Text = "Ok"
       Me.btnOk.UseVisualStyleBackColor = True
-      '
-      'trkQuality
-      '
-      Me.trkQuality.Dock = System.Windows.Forms.DockStyle.Fill
-      Me.trkQuality.Location = New System.Drawing.Point(0, 0)
-      Me.trkQuality.Maximum = 100
-      Me.trkQuality.Name = "trkQuality"
-      Me.trkQuality.Size = New System.Drawing.Size(491, 43)
-      Me.trkQuality.TabIndex = 3
       '
       'frmPreview
       '
