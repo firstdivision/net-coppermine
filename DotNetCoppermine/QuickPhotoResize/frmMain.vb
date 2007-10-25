@@ -18,10 +18,10 @@ Public Class frmMain
       Me.OpenFileDialog1.ShowDialog()
 
       If Not OpenFileDialog1.FileName = "" Then
-         Me.lblInput.Text = OpenFileDialog1.FileName
+         lblInput.Text = OpenFileDialog1.FileName
+         _OriginalImg = Image.FromFile(lblInput.Text)
       End If
 
-      _OriginalImg = Image.FromFile(lblInput.Text)
 
       Me.btnPreview.Enabled = lblInput.Text <> "" And lblOutput.Text <> ""
       Me.btnResize.Enabled = lblInput.Text <> "" And lblOutput.Text <> ""
@@ -97,15 +97,23 @@ Public Class frmMain
 
          lblStatus.Text = "Processing images..."
 
+
+         Me.Enabled = False
+
          For Each Item As ImageDimension In arlSizes
             SaveToDisk(Me.trkQuality.Value, Item._Width, Item._Height)
             prgResizeProgress.Value = i
 
             i += 1
+
+            lblStatus.Text = "Making " & Item._Height & " x " & Item._Width
+            Application.DoEvents()
          Next
 
          prgResizeProgress.Value = prgResizeProgress.Maximum
          lblStatus.Text = "Done."
+
+         Me.Enabled = True
 
       End If
 
@@ -149,4 +157,11 @@ Public Class frmMain
       MyPreview.ShowDialog(Me)
    End Sub
 
+   Private Sub frmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+      OpenFileDialog1.FileName = ""
+   End Sub
+
+   Private Sub trkQuality_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles trkQuality.ValueChanged
+      lblQuality.Text = trkQuality.Value
+   End Sub
 End Class

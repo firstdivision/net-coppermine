@@ -39,6 +39,7 @@ Partial Class frmMain
       Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
       Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog
       Me.GroupBox4 = New System.Windows.Forms.GroupBox
+      Me.lblQuality = New System.Windows.Forms.Label
       Me.trkQuality = New System.Windows.Forms.TrackBar
       Me.btnResize = New System.Windows.Forms.Button
       Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
@@ -129,7 +130,7 @@ Partial Class frmMain
       Me.GroupBox2.Controls.Add(Me.chk800X600)
       Me.GroupBox2.Location = New System.Drawing.Point(14, 106)
       Me.GroupBox2.Name = "GroupBox2"
-      Me.GroupBox2.Size = New System.Drawing.Size(258, 139)
+      Me.GroupBox2.Size = New System.Drawing.Size(258, 126)
       Me.GroupBox2.TabIndex = 1
       Me.GroupBox2.TabStop = False
       Me.GroupBox2.Text = "Output Sizes"
@@ -212,27 +213,37 @@ Partial Class frmMain
       '
       'GroupBox4
       '
+      Me.GroupBox4.Controls.Add(Me.lblQuality)
       Me.GroupBox4.Controls.Add(Me.trkQuality)
-      Me.GroupBox4.Location = New System.Drawing.Point(290, 123)
+      Me.GroupBox4.Location = New System.Drawing.Point(290, 106)
       Me.GroupBox4.Name = "GroupBox4"
       Me.GroupBox4.Size = New System.Drawing.Size(247, 65)
       Me.GroupBox4.TabIndex = 3
       Me.GroupBox4.TabStop = False
       Me.GroupBox4.Text = "Output Qualilty"
       '
+      'lblQuality
+      '
+      Me.lblQuality.AutoSize = True
+      Me.lblQuality.Location = New System.Drawing.Point(222, 23)
+      Me.lblQuality.Name = "lblQuality"
+      Me.lblQuality.Size = New System.Drawing.Size(19, 13)
+      Me.lblQuality.TabIndex = 1
+      Me.lblQuality.Text = "80"
+      '
       'trkQuality
       '
-      Me.trkQuality.Location = New System.Drawing.Point(21, 19)
+      Me.trkQuality.Location = New System.Drawing.Point(6, 19)
       Me.trkQuality.Maximum = 100
       Me.trkQuality.Name = "trkQuality"
-      Me.trkQuality.Size = New System.Drawing.Size(205, 45)
+      Me.trkQuality.Size = New System.Drawing.Size(210, 45)
       Me.trkQuality.TabIndex = 0
       Me.trkQuality.Value = 80
       '
       'btnResize
       '
       Me.btnResize.Enabled = False
-      Me.btnResize.Location = New System.Drawing.Point(441, 205)
+      Me.btnResize.Location = New System.Drawing.Point(441, 194)
       Me.btnResize.Name = "btnResize"
       Me.btnResize.Size = New System.Drawing.Size(75, 23)
       Me.btnResize.TabIndex = 4
@@ -242,29 +253,30 @@ Partial Class frmMain
       'StatusStrip1
       '
       Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.prgResizeProgress, Me.lblStatus})
-      Me.StatusStrip1.Location = New System.Drawing.Point(0, 261)
+      Me.StatusStrip1.Location = New System.Drawing.Point(0, 245)
       Me.StatusStrip1.Name = "StatusStrip1"
       Me.StatusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
       Me.StatusStrip1.Size = New System.Drawing.Size(550, 22)
+      Me.StatusStrip1.SizingGrip = False
       Me.StatusStrip1.TabIndex = 5
       Me.StatusStrip1.Text = "StatusStrip1"
       '
       'prgResizeProgress
       '
       Me.prgResizeProgress.Name = "prgResizeProgress"
-      Me.prgResizeProgress.Size = New System.Drawing.Size(100, 16)
+      Me.prgResizeProgress.Size = New System.Drawing.Size(430, 16)
       '
       'lblStatus
       '
       Me.lblStatus.Name = "lblStatus"
-      Me.lblStatus.Size = New System.Drawing.Size(50, 17)
-      Me.lblStatus.Text = "Status..."
+      Me.lblStatus.Size = New System.Drawing.Size(55, 17)
+      Me.lblStatus.Text = "Waiting..."
       Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight
       '
       'btnPreview
       '
       Me.btnPreview.Enabled = False
-      Me.btnPreview.Location = New System.Drawing.Point(338, 205)
+      Me.btnPreview.Location = New System.Drawing.Point(338, 194)
       Me.btnPreview.Name = "btnPreview"
       Me.btnPreview.Size = New System.Drawing.Size(97, 23)
       Me.btnPreview.TabIndex = 6
@@ -275,7 +287,7 @@ Partial Class frmMain
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(550, 283)
+      Me.ClientSize = New System.Drawing.Size(550, 267)
       Me.Controls.Add(Me.btnPreview)
       Me.Controls.Add(Me.StatusStrip1)
       Me.Controls.Add(Me.btnResize)
@@ -322,5 +334,6 @@ Partial Class frmMain
    Friend WithEvents chk1280X1024 As System.Windows.Forms.CheckBox
    Friend WithEvents chk1920X1200 As System.Windows.Forms.CheckBox
    Friend WithEvents chk1600X1200 As System.Windows.Forms.CheckBox
+   Friend WithEvents lblQuality As System.Windows.Forms.Label
 
 End Class

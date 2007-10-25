@@ -44,8 +44,7 @@ Public Class frmPreview
       LoadPreview()
    End Sub
 
-   Private Sub trkQuality_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles trkQuality.Scroll
+   Private Sub trkQuality_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles trkQuality.ValueChanged
       lblQuality.Text = trkQuality.Value
    End Sub
-
 End Class
