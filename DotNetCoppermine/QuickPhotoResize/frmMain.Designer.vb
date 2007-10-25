@@ -30,10 +30,9 @@ Partial Class frmMain
       Me.Label2 = New System.Windows.Forms.Label
       Me.Label1 = New System.Windows.Forms.Label
       Me.GroupBox2 = New System.Windows.Forms.GroupBox
+      Me.CheckBox1 = New System.Windows.Forms.CheckBox
       Me.chk640X480 = New System.Windows.Forms.CheckBox
       Me.chk800X600 = New System.Windows.Forms.CheckBox
-      Me.GroupBox3 = New System.Windows.Forms.GroupBox
-      Me.picPreview = New System.Windows.Forms.PictureBox
       Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
       Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog
       Me.GroupBox4 = New System.Windows.Forms.GroupBox
@@ -42,11 +41,9 @@ Partial Class frmMain
       Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
       Me.prgResizeProgress = New System.Windows.Forms.ToolStripProgressBar
       Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel
-      Me.CheckBox1 = New System.Windows.Forms.CheckBox
+      Me.btnPreview = New System.Windows.Forms.Button
       Me.GroupBox1.SuspendLayout()
       Me.GroupBox2.SuspendLayout()
-      Me.GroupBox3.SuspendLayout()
-      CType(Me.picPreview, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.GroupBox4.SuspendLayout()
       CType(Me.trkQuality, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.StatusStrip1.SuspendLayout()
@@ -126,10 +123,22 @@ Partial Class frmMain
       Me.GroupBox2.Controls.Add(Me.chk800X600)
       Me.GroupBox2.Location = New System.Drawing.Point(14, 106)
       Me.GroupBox2.Name = "GroupBox2"
-      Me.GroupBox2.Size = New System.Drawing.Size(260, 101)
+      Me.GroupBox2.Size = New System.Drawing.Size(523, 101)
       Me.GroupBox2.TabIndex = 1
       Me.GroupBox2.TabStop = False
       Me.GroupBox2.Text = "Output Sizes"
+      '
+      'CheckBox1
+      '
+      Me.CheckBox1.AutoSize = True
+      Me.CheckBox1.Checked = True
+      Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
+      Me.CheckBox1.Location = New System.Drawing.Point(19, 65)
+      Me.CheckBox1.Name = "CheckBox1"
+      Me.CheckBox1.Size = New System.Drawing.Size(81, 17)
+      Me.CheckBox1.TabIndex = 2
+      Me.CheckBox1.Text = "1024 X 768"
+      Me.CheckBox1.UseVisualStyleBackColor = True
       '
       'chk640X480
       '
@@ -154,24 +163,6 @@ Partial Class frmMain
       Me.chk800X600.TabIndex = 0
       Me.chk800X600.Text = "800 X 600"
       Me.chk800X600.UseVisualStyleBackColor = True
-      '
-      'GroupBox3
-      '
-      Me.GroupBox3.Controls.Add(Me.picPreview)
-      Me.GroupBox3.Location = New System.Drawing.Point(280, 106)
-      Me.GroupBox3.Name = "GroupBox3"
-      Me.GroupBox3.Size = New System.Drawing.Size(257, 172)
-      Me.GroupBox3.TabIndex = 2
-      Me.GroupBox3.TabStop = False
-      Me.GroupBox3.Text = "Preview"
-      '
-      'picPreview
-      '
-      Me.picPreview.Location = New System.Drawing.Point(6, 19)
-      Me.picPreview.Name = "picPreview"
-      Me.picPreview.Size = New System.Drawing.Size(245, 147)
-      Me.picPreview.TabIndex = 0
-      Me.picPreview.TabStop = False
       '
       'OpenFileDialog1
       '
@@ -198,7 +189,7 @@ Partial Class frmMain
       '
       'btnResize
       '
-      Me.btnResize.Location = New System.Drawing.Point(463, 284)
+      Me.btnResize.Location = New System.Drawing.Point(463, 213)
       Me.btnResize.Name = "btnResize"
       Me.btnResize.Size = New System.Drawing.Size(75, 23)
       Me.btnResize.TabIndex = 4
@@ -225,28 +216,26 @@ Partial Class frmMain
       Me.lblStatus.Name = "lblStatus"
       Me.lblStatus.Size = New System.Drawing.Size(50, 17)
       Me.lblStatus.Text = "Status..."
+      Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight
       '
-      'CheckBox1
+      'btnPreview
       '
-      Me.CheckBox1.AutoSize = True
-      Me.CheckBox1.Checked = True
-      Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
-      Me.CheckBox1.Location = New System.Drawing.Point(19, 65)
-      Me.CheckBox1.Name = "CheckBox1"
-      Me.CheckBox1.Size = New System.Drawing.Size(81, 17)
-      Me.CheckBox1.TabIndex = 2
-      Me.CheckBox1.Text = "1024 X 768"
-      Me.CheckBox1.UseVisualStyleBackColor = True
+      Me.btnPreview.Location = New System.Drawing.Point(360, 213)
+      Me.btnPreview.Name = "btnPreview"
+      Me.btnPreview.Size = New System.Drawing.Size(97, 23)
+      Me.btnPreview.TabIndex = 6
+      Me.btnPreview.Text = "Show Preview"
+      Me.btnPreview.UseVisualStyleBackColor = True
       '
       'frmMain
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.ClientSize = New System.Drawing.Size(550, 332)
+      Me.Controls.Add(Me.btnPreview)
       Me.Controls.Add(Me.StatusStrip1)
       Me.Controls.Add(Me.btnResize)
       Me.Controls.Add(Me.GroupBox4)
-      Me.Controls.Add(Me.GroupBox3)
       Me.Controls.Add(Me.GroupBox2)
       Me.Controls.Add(Me.GroupBox1)
       Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -257,8 +246,6 @@ Partial Class frmMain
       Me.GroupBox1.PerformLayout()
       Me.GroupBox2.ResumeLayout(False)
       Me.GroupBox2.PerformLayout()
-      Me.GroupBox3.ResumeLayout(False)
-      CType(Me.picPreview, System.ComponentModel.ISupportInitialize).EndInit()
       Me.GroupBox4.ResumeLayout(False)
       Me.GroupBox4.PerformLayout()
       CType(Me.trkQuality, System.ComponentModel.ISupportInitialize).EndInit()
@@ -274,14 +261,12 @@ Partial Class frmMain
    Friend WithEvents Label2 As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-   Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
    Friend WithEvents btnBrowseInput As System.Windows.Forms.Button
    Friend WithEvents btnBrowseOutput As System.Windows.Forms.Button
    Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
    Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
    Friend WithEvents chk640X480 As System.Windows.Forms.CheckBox
    Friend WithEvents chk800X600 As System.Windows.Forms.CheckBox
-   Friend WithEvents picPreview As System.Windows.Forms.PictureBox
    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
    Friend WithEvents trkQuality As System.Windows.Forms.TrackBar
    Friend WithEvents btnResize As System.Windows.Forms.Button
@@ -289,5 +274,6 @@ Partial Class frmMain
    Friend WithEvents lblStatus As System.Windows.Forms.ToolStripStatusLabel
    Friend WithEvents prgResizeProgress As System.Windows.Forms.ToolStripProgressBar
    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+   Friend WithEvents btnPreview As System.Windows.Forms.Button
 
 End Class

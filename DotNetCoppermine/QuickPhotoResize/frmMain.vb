@@ -1,5 +1,7 @@
 Public Class frmMain
 
+   Dim _OriginalImg As Image
+
    Private Sub btnBrowseOutput_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowseOutput.Click
       Me.FolderBrowserDialog1.ShowDialog()
 
@@ -15,11 +17,14 @@ Public Class frmMain
       If Not OpenFileDialog1.FileName = "" Then
          Me.lblInput.Text = OpenFileDialog1.FileName
       End If
+
+      _OriginalImg = Image.FromFile(lblInput.Text)
+
    End Sub
 
 
 
-   Private Sub SaveToDisk(ByVal intQuality As Integer, ByVal Height As Integer, ByVal Width As Integer, Optional ByVal ReturnFileSize As Boolean = False)
+   Private Sub SaveToDisk(ByVal intQuality As Integer, ByVal Width As Integer, ByVal Height As Integer, Optional ByVal ReturnFileSize As Boolean = False)
       Try
          Dim myImageManager As New libMage.ImageResizer
          Dim myOriginal As New IO.FileInfo(lblInput.Text)
@@ -30,20 +35,22 @@ Public Class frmMain
          If Not myDirOutput.Exists Then myDirOutput.Create()
 
          'get the original image
-         Dim OriginalImg As Image = Image.FromFile(myOriginal.FullName) ' Fetch User Filenam
+         'Dim OriginalImg As Image = Image.FromFile(myOriginal.FullName) ' Fetch User Filenam
 
          Dim MyFile As IO.FileInfo
 
          Dim StartTime As Date = Now
 
          If myOriginal.Extension.ToLower = ".jpg" Then
-            MyFile = New IO.FileInfo(myDirOutput.FullName & "\thumb_" & myOriginal.Name)
+
+            'delete the file if it exists
+            MyFile = New IO.FileInfo(myDirOutput.FullName & "\" & myOriginal.Name & "_" & Width.ToString & "_" & Height.ToString & ".jpg")
             MyFile.Delete()
 
             Dim OutputStream As System.IO.FileStream = MyFile.Create
 
             'resize the image based on its longest side to preserve aspect ratio
-            If OriginalImg.Width > OriginalImg.Height Then
+            If _OriginalImg.Width > _OriginalImg.Height Then
                myImageManager.ResizeToJPEG(myOriginal.FullName, OutputStream, -1, Width, intQuality)
             Else
                myImageManager.ResizeToJPEG(myOriginal.FullName, OutputStream, Height, -1, intQuality)
@@ -65,10 +72,42 @@ Public Class frmMain
    Private Sub btnResize_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnResize.Click
 
       'For each checked box save the thumb
-      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 480, 640)
-      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 480, 640)
-      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 480, 640)
-      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 480, 640)
+
+      '4:3 sizes
+      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 640, 480)
+      If Me.chk800X600.Checked Then SaveToDisk(trkQuality.Value, 800, 600)
+      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 1024, 768)
+      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 1280, 1024)
+
+
+      'Widescreen Sizes
+      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 1920, 1200)
+      If Me.chk640X480.Checked Then SaveToDisk(trkQuality.Value, 1600, 1200)
+
    End Sub
 
+   Private Sub btnPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreview.Click
+      Dim MyPreview As New frmPreview
+      Dim sngAspectRatio As Single
+      Dim LongestLength As Integer = 600
+
+      'set form dimensions
+      'which side is longest?
+      If _OriginalImg.Height > _OriginalImg.Width Then 'Height is the longest
+         sngAspectRatio = _OriginalImg.Height / LongestLength
+
+         MyPreview.Height = LongestLength
+         MyPreview.Width = _OriginalImg.Width / sngAspectRatio
+
+      Else 'Width is the longest
+         sngAspectRatio = _OriginalImg.Width / LongestLength
+
+         MyPreview.Width = LongestLength
+         MyPreview.Height = _OriginalImg.Height / sngAspectRatio
+      End If
+
+
+      MyPreview.LoadPreview(lblInput.Text, trkQuality.Value)
+      MyPreview.ShowDialog(Me)
+   End Sub
 End Class
