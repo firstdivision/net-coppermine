@@ -20,6 +20,8 @@ Public Class frmMain
       If Not OpenFileDialog1.FileName = "" Then
          lblInput.Text = OpenFileDialog1.FileName
          _OriginalImg = Image.FromFile(lblInput.Text)
+
+         'enable checkboxes based on image size
       End If
 
 
@@ -50,7 +52,7 @@ Public Class frmMain
          If myOriginal.Extension.ToLower = ".jpg" Then
 
             'delete the file if it exists
-            MyFile = New IO.FileInfo(myDirOutput.FullName & "\" & myOriginal.Name & "_" & Width.ToString & "_" & Height.ToString & ".jpg")
+            MyFile = New IO.FileInfo(myDirOutput.FullName & "\" & myOriginal.Name.Replace(myOriginal.Extension, "") & "_" & Width.ToString & "_" & Height.ToString & ".jpg")
             MyFile.Delete()
 
             Dim OutputStream As System.IO.FileStream = MyFile.Create
@@ -93,7 +95,7 @@ Public Class frmMain
 
       If arlSizes.Count > 0 Then
          prgResizeProgress.Minimum = 0
-         prgResizeProgress.Maximum = arlSizes.Count - 1
+         prgResizeProgress.Maximum = arlSizes.Count
 
          lblStatus.Text = "Processing images..."
 
@@ -114,7 +116,8 @@ Public Class frmMain
          lblStatus.Text = "Done."
 
          Me.Enabled = True
-
+      Else
+         MsgBox("You must select at least one output dimension.", MsgBoxStyle.Information, "Please Select An Ouput Dimension")
       End If
 
 

@@ -152,6 +152,7 @@ Public Class ImageResizer
          End Select
 
          Dim thumb As System.Drawing.Image = New Bitmap(Width, Height)
+
          Dim objGraphics As System.Drawing.Graphics
          objGraphics = System.Drawing.Graphics.FromImage(thumb)
          objGraphics.InterpolationMode = InterpolationMode.HighQualityBicubic

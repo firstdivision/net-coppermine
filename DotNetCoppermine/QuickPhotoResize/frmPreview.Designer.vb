@@ -119,7 +119,7 @@ Partial Class frmPreview
       Me.Controls.Add(Me.SplitContainer1)
       Me.Name = "frmPreview"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-      Me.Text = "frmPreview"
+      Me.Text = "Preview Output"
       Me.SplitContainer1.Panel1.ResumeLayout(False)
       Me.SplitContainer1.Panel2.ResumeLayout(False)
       Me.SplitContainer1.ResumeLayout(False)
